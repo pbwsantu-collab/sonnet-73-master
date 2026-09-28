@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#1a1423" />
-  <meta name="description" content="Sonnet 73 Master — Interactive bilingual study app for Class XII (Bengali Medium). Read, understand, analyse Shakespeare’s Sonnet 73." />
+  <meta name="description" content="Sonnet 73 Master — Interactive bilingual study app for Class XII Bengali Medium (West Bengal, India). Read, understand, analyse Shakespeare’s Sonnet 73." />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -16,7 +16,6 @@
 </head>
 <body>
   <div id="app">
-    <!-- Sticky Nav -->
     <header class="navbar" id="navbar">
       <div class="nav-brand" onclick="navigate('home')">
         <span class="brand-icon">📜</span>
@@ -44,7 +43,6 @@
       </nav>
     </header>
 
-    <!-- Language + Simple Mode bar -->
     <div class="toolbar sticky-tools">
       <div class="lang-switch" id="langSwitch">
         <button data-lang="en" class="active">EN</button>
@@ -56,20 +54,16 @@
       <div class="progress-mini" id="progressMini">0%</div>
     </div>
 
-    <main id="mainContent">
-      <!-- Pages injected here -->
-    </main>
+    <main id="mainContent"></main>
 
-    <!-- Floating study tools -->
     <div class="fab-bar" id="fabBar">
       <button onclick="navigate('vocab')" title="Vocabulary">🔤</button>
-      <button onclick="navigate('bangla')" title="Bengali">🇧🇩</button>
+      <button onclick="navigate('bangla')" title="বাংলা (India)">🇮🇳</button>
       <button onclick="speakCurrent()" title="Audio">🔊</button>
       <button onclick="openNotes()" title="Notes">📝</button>
       <button onclick="openSearch()" title="Search">🔍</button>
     </div>
 
-    <!-- Word popup -->
     <div class="modal" id="wordModal" hidden>
       <div class="modal-card">
         <button class="modal-close" onclick="closeModal('wordModal')">×</button>
@@ -77,14 +71,12 @@
       </div>
     </div>
 
-    <!-- Line sheet -->
     <div class="sheet" id="lineSheet" hidden>
       <div class="sheet-handle"></div>
       <div class="sheet-body" id="lineSheetBody"></div>
       <button class="sheet-close" onclick="closeSheet()">Close</button>
     </div>
 
-    <!-- Search modal -->
     <div class="modal" id="searchModal" hidden>
       <div class="modal-card wide">
         <button class="modal-close" onclick="closeModal('searchModal')">×</button>
@@ -93,7 +85,6 @@
       </div>
     </div>
 
-    <!-- Notes panel -->
     <div class="modal" id="notesModal" hidden>
       <div class="modal-card">
         <button class="modal-close" onclick="closeModal('notesModal')">×</button>
@@ -104,7 +95,6 @@
       </div>
     </div>
 
-    <!-- Offline indicator -->
     <div class="offline-badge" id="offlineBadge" hidden>Offline mode</div>
   </div>
 

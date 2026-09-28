@@ -1,7 +1,7 @@
 {
   "name": "Sonnet 73 Master",
   "short_name": "S73 Master",
-  "description": "Interactive bilingual study app for Shakespeare's Sonnet 73 — Class XII Bengali Medium",
+  "description": "Interactive bilingual study app for Shakespeare's Sonnet 73 — Class XII Bengali Medium — West Bengal, India",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0f0a14",

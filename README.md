@@ -2,13 +2,14 @@
 
 **Read. Understand. Analyse. Remember.**
 
-Interactive bilingual Progressive Web App for West Bengal Bengali-medium Class XII students studying William Shakespeare’s **Sonnet 73 (LXXIII)**.
+Interactive bilingual Progressive Web App for **West Bengal (India)** Bengali-medium Class XII students studying William Shakespeare’s **Sonnet 73 (LXXIII)**.
 
 ## Features
 
 - Full poem with **line-by-line analysis** and **clickable vocabulary**
 - **English / বাংলা / BOTH** language modes
 - **Simple mode** (Explain like Class V)
+- **Teach Me** step-by-step lesson mode
 - Three central metaphors visualiser (Autumn · Twilight · Dying Fire)
 - Literary devices, themes, critical appreciation
 - Exam question bank (VSQ / Short / Broad) with bilingual answers
@@ -20,39 +21,31 @@ Interactive bilingual Progressive Web App for West Bengal Bengali-medium Class X
 
 ## How to run
 
-Open `index.html` in any modern browser (Chrome / Edge / Firefox / Safari).
+Open `index.html` in any modern browser, or use GitHub Pages:
 
-For local server (recommended for PWA):
+**https://pbwsantu-collab.github.io/sonnet-73-master/**
 
 ```bash
 npx serve .
-# or
-python -m http.server 8080
 ```
-
-Then visit `http://localhost:8080`.
 
 ## Project structure
 
 ```
 sonnet-73-master/
-├── index.html          # Shell
-├── styles.css          # Literary dark theme
-├── data.js             # All educational content (poem, vocab, quiz…)
-├── app.js              # UI logic, navigation, progress, quiz engine
-├── sw.js               # Service Worker (offline)
-├── manifest.json       # PWA manifest
+├── index.html
+├── styles.css
+├── data.js
+├── app.js
+├── sw.js
+├── manifest.json
 ├── favicon.svg
 └── README.md
 ```
 
 ## Content source
 
-Poem text and annotations follow the Class XII textbook material supplied for Sonnet 73 (pages 177–178), with additional pedagogical scaffolding for Bengali-medium learners.
-
-## Extending to other texts
-
-Educational content is isolated in `data.js`. To support another poem or prose piece, replace the data module and keep the same UI engine — the architecture is designed as a reusable **English Literature Master** shell.
+Poem text and annotations follow Class XII textbook material for Sonnet 73, with pedagogical scaffolding for Bengali-medium learners in **West Bengal, India**.
 
 ## Licence
 
