@@ -1,5 +1,6 @@
 /* ============================================================
    Sonnet 73 Master — Application Logic
+   West Bengal, India · Class XII Bengali Medium
    ============================================================ */
 
 const STORAGE_KEY = 's73_progress_v1';
@@ -313,8 +314,8 @@ function makeWordsClickable(text) {
   const sorted = [...VOCAB].sort((a, b) => b.word.length - a.word.length);
   let html = escapeHtml(text);
   sorted.forEach(v => {
-    const re = new RegExp(`\\b(${v.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})\\b`, 'gi');
-    html = html.replace(re, `<span class="word" onclick="event.stopPropagation();showWord('$1')">$1</span>`);
+    const re = new RegExp('\\b(' + v.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')\\b', 'gi');
+    html = html.replace(re, '<span class="word" onclick="event.stopPropagation();showWord(\$1)">$1</span>'.replace('\\$1',"'$1'"));
   });
   return html;
 }
@@ -327,10 +328,11 @@ function renderHome() {
       <h1>SONNET 73</h1>
       <p class="subtitle">William Shakespeare</p>
       <p class="bn-sub">বার্ধক্য, সময়, মৃত্যু ও ভালোবাসার অমর কবিতা</p>
-      <p class="hero-meta">Class XII · English · Bengali Medium</p>
+      <p class="hero-meta">Class XII · English · Bengali Medium · West Bengal, India 🇮🇳</p>
       <div class="hero-btns">
         <button class="btn primary" onclick="navigate('poem')">START LEARNING</button>
         <button class="btn" onclick="navigate('poem')">READ POEM</button>
+        <button class="btn" onclick="navigate('teach')">🧒 TEACH ME</button>
         <button class="btn" onclick="navigate('revision')">QUICK REVISION</button>
         <button class="btn" onclick="navigate('quiz')">TAKE QUIZ</button>
       </div>
@@ -352,10 +354,39 @@ function renderHome() {
         <button class="btn sm" onclick="navigate('themes')">💡 Themes</button>
         <button class="btn sm" onclick="navigate('critical')">🧠 Critical</button>
         <button class="btn sm" onclick="navigate('exam')">📝 Exam Qs</button>
+        <button class="btn sm" onclick="navigate('teach')">🧒 Teach Me</button>
         <button class="btn sm" onclick="navigate('progress')">⭐ Progress</button>
       </div>
     </div>
   `;
+}
+
+function renderTeach() {
+  markSection('revision', 40);
+  const steps = [
+    { t: 'Who was Shakespeare?', en: 'William Shakespeare (1564–1616), the Bard of Avon — poet, playwright, actor.', bn: 'উইলিয়াম শেক্সপিয়ার (১৫৬৪–১৬১৬), বার্ড অফ এভন — কবি, নাট্যকার, অভিনেতা।' },
+    { t: 'What is a sonnet?', en: 'A 14-line poem in iambic pentameter. Shakespearean form: 3 quatrains + couplet, rhyme ABAB CDCD EFEF GG.', bn: '১৪ লাইনের কবিতা। শেক্সপিয়রীয় রূপ: ৩টি কোয়াট্রেন + কপলেট, ছন্দ ABAB CDCD EFEF GG।' },
+    { t: 'What is Sonnet 73 about?', en: 'Aging, time, mortality, and how awareness of death makes love stronger.', bn: 'বার্ধক্য, সময়, মরণশীলতা — এবং মৃত্যুচেতনা কীভাবে ভালোবাসাকে দৃঢ় করে।' },
+    { t: 'Quatrain 1 — Autumn', en: 'Yellow leaves, bare boughs, cold — old age as late autumn. “Bare ruin’d choirs” = empty branches once full of song.', bn: 'হলুদ পাতা, খালি ডাল, ঠান্ডা — বার্ধক্যকে শরতের সাথে তুলনা।' },
+    { t: 'Quatrain 2 — Twilight', en: 'Twilight after sunset → black night. Night = death; sleep = Death’s second self.', bn: 'সূর্যাস্তের পর গোধূলি → কালো রাত। রাত = মৃত্যু; ঘুম = মৃত্যুর দ্বিতীয় রূপ।' },
+    { t: 'Quatrain 3 — Dying Fire', en: 'Fire on the ashes of youth, on a death-bed, consumed by what nourished it — life is self-consuming.', bn: 'যৌবনের ছাইয়ের উপর আগুন, মৃত্যুশয্যায় — জীবন স্বয়ংসম্পূর্ণ ক্ষয়শীল।' },
+    { t: 'The Couplet', en: 'You perceive this → love becomes stronger → love well what you must leave soon.', bn: 'তুমি উপলব্ধি করো → ভালোবাসা দৃঢ় হয় → যা শীঘ্রই ছাড়তে হবে তাকে ভালোভাবে ভালোবাসো।' },
+    { t: 'Remember', en: 'Three metaphors → Mortality → Stronger love. Rhyme: ABAB CDCD EFEF GG.', bn: 'তিন রূপক → মরণশীলতা → দৃঢ় ভালোবাসা। ছন্দ: ABAB CDCD EFEF GG।' }
+  ];
+  return `<h1 class="section-title">Teach Me</h1>
+    <p class="section-desc">Step-by-step lesson · West Bengal, India 🇮🇳</p>
+    ${steps.map((s,i) => `
+      <div class="card">
+        <h3>${i+1}. ${s.t}</h3>
+        <p class="en-only">${s.en}</p>
+        <p class="bn">${s.bn}</p>
+        <button class="btn sm primary" onclick="this.textContent='✓ Understood';this.disabled=true;markSection('revision', Math.min(100, 40+(i+1)*8))">✓ I Understand</button>
+      </div>
+    `).join('')}
+    <div class="card" style="text-align:center">
+      <button class="btn primary" onclick="navigate('quiz')">Take Quiz →</button>
+      <button class="btn" onclick="navigate('revision')">Revision</button>
+    </div>`;
 }
 
 function renderPoet() {
@@ -448,7 +479,7 @@ function filterVocab(q) {
 
 function renderBangla() {
   markSection('bangla', 70);
-  return `<h1 class="section-title">বাংলা অর্থ</h1><p class="section-desc">Line-by-line Bengali meaning</p>
+  return `<h1 class="section-title">বাংলা অর্থ</h1><p class="section-desc">Line-by-line Bengali meaning · India 🇮🇳</p>
     ${LINE_ANALYSIS.map(la => `<div class="card"><p style="font-family:var(--font-serif);font-size:1.05rem">${la.id}. ${la.text}</p><p class="bn" style="color:var(--accent);margin-top:6px">${la.bn}</p><p class="text-muted mt-1" style="font-size:0.9rem">${la.simpleBn}</p></div>`).join('')}`;
 }
 
@@ -518,7 +549,7 @@ function renderProgress() {
 
 function render() {
   const main = document.getElementById('mainContent');
-  const map = { home: renderHome, poet: renderPoet, about: renderAbout, poem: renderPoem, vocab: renderVocab, bangla: renderBangla, analysis: renderAnalysis, devices: renderDevices, themes: renderThemes, background: renderBackground, critical: renderCritical, exam: renderExam, quiz: renderQuiz, revision: renderRevision, progress: renderProgress };
+  const map = { home: renderHome, poet: renderPoet, about: renderAbout, poem: renderPoem, vocab: renderVocab, bangla: renderBangla, analysis: renderAnalysis, devices: renderDevices, themes: renderThemes, background: renderBackground, critical: renderCritical, exam: renderExam, quiz: renderQuiz, revision: renderRevision, progress: renderProgress, teach: renderTeach };
   const fn = map[state.page] || renderHome;
   main.innerHTML = fn();
   updateProgressUI();
